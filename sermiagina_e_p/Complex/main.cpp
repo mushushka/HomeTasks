@@ -9,10 +9,11 @@ struct Complex {
     bool operator!=(const Complex& rhs) const { return !operator==(rhs); }
     Complex& operator+=(const Complex& rhs);
     Complex& operator +=(const double rhs) { return operator+=(Complex(rhs)); }
-
-
-    Complex& operator*=(const double rhs);
-    std::ostream& writeTo(std::ostream& ostrm) const;
+    Complex& operator-=(const Complex& rhs);
+    Complex& operator-=(const double rhs) { return operator-=(Complex(rhs)); }
+    Complex& operator*=(const Complex& rhs);
+    Complex& operator*=(const double rhs) { return operator*=(Complex(rhs));}
+        std::ostream& writeTo(std::ostream& ostrm) const;
     std::istream& readFrom(std::istream& istrm);
 
 
@@ -62,8 +63,14 @@ int main()
     Complex z;
     z += Complex(8.0);
     testParse("{8.9,9}");
-    testParse("{8.9,9}");
-    testParse("{8.9,9}");
+    cout << z;
+    z -= Complex(3.0, -4);
+    cout << z;
+    z -= 6.0;
+    cout << z;
+    z *= 6.0;
+    cout << z;
+
     return 0;
 }
 
@@ -87,9 +94,26 @@ Complex& Complex::operator+=(const Complex& rhs)
     return *this;
 }
 
+Complex& Complex::operator-=(const Complex& rhs)
+{
+    Complex z = Complex(-rhs.re, -rhs.im);
+
+    return operator+=(z);
+}
+
+Complex&  Complex::operator*=(const Complex& rhs)
+{
+    re = (re*rhs.re) - (im*rhs.im);
+    im = (re*rhs.im) + (im*rhs.re);
+    return *this;
+
+}
+
+
+
 std::ostream& Complex::writeTo(std::ostream& ostrm) const
 {
-    ostrm << leftBrace << re << separator << im << rightBrace;
+    ostrm << leftBrace << re << separator << im << rightBrace << '\n';
     return ostrm;
 
 }
