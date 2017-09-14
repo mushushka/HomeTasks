@@ -26,8 +26,15 @@ struct Complex {
     static const char rightBrace{'}'};
 };
 
-Complex operator+(const Complex& lhs, const Complex& rhs);
-Complex operator-(const Complex& lhs, const Complex& rhs);
+Complex operator+(const Complex& lhs, const Complex& rhs)
+{
+
+    return Complex(rhs.re + lhs.re, lhs.im + rhs.im );
+};
+Complex operator-(const Complex& lhs, const Complex& rhs)
+{
+  return Complex(lhs.re - rhs.re, lhs.im - rhs.im);
+};
 
 inline std::ostream& operator<<(std::ostream& ostrm, const Complex& rhs)
 {
@@ -61,15 +68,21 @@ int main()
     using namespace std;
 
     Complex z;
+    cout << "Initial complex number: " << z;
     z += Complex(8.0);
-    testParse("{8.9,9}");
-    cout << z;
+    cout << "8.0 added: " << z;
     z -= Complex(3.0, -4);
+
     cout << z;
     z -= 6.0;
     cout << z;
     z *= 6.0;
     cout << z;
+   // testParse("{8.9,9}");
+   // testParse("{8.9, 9}");
+   // testParse("{8.9,9");
+
+    //сделать понятно
 
     return 0;
 }

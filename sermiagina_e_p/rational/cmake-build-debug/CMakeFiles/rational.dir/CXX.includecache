@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ElenaSermagina/Downloads/HomeTasks/HomeTasks/sermiagina_e_p/rational/main.cpp
+iostream
+-
+sstream
+-
+
