@@ -40,16 +40,16 @@ private:
 
     int _complete {0};
     int _natural{1};
-    ~Rational() = default;
+   // ~Rational() = default;
 
 //реализация нормализации
    int commonDivivsor(int firstNumber, int secondNumber) {
 
         while (firstNumber && secondNumber) {
-            if (firstNumber > secondNumber) {
-                firstNumber = firstNumber % secondNumber;
+            if (abs(firstNumber) > abs(secondNumber)) {
+                firstNumber = abs(firstNumber % secondNumber);
             } else {
-                secondNumber = secondNumber % firstNumber;
+                secondNumber = abs(secondNumber % firstNumber);
             }
 
         }
@@ -60,6 +60,19 @@ private:
 
 
 };
+
+
+
+std::ostream& Rational::writeTo(std::ostream& ostrm) const
+{
+    ostrm << _complete << "/" << _natural;
+    return ostrm;
+}
+
+std::ostream& operator<<(std::ostream& ostr, Rational number)
+{
+    return number.writeTo(ostr);
+}
 
 
 Rational& Rational::operator/=(const Rational &number) {
@@ -81,8 +94,21 @@ Rational& Rational::operator*=(const Rational &number) {
 }
 
 Rational& Rational::operator+=(const Rational &number) {
+    _complete = _complete*number._natural + number._complete*_natural;
+    _natural*=number._natural;
+    normalize();
+
+    return *this;
+
+}
+
+Rational& Rational::operator-=(const Rational &number) {
+    _complete = _complete*number._natural - number._complete*_natural;
+    _natural*=number._natural;
+    normalize();
 
 
+    return *this;
 }
 
 
@@ -105,16 +131,56 @@ Rational operator-(const Rational& firstNumber, const Rational& secondNumber);
 Rational operator/(const Rational& firstNumber, const Rational& secondNumber);
 Rational operator*(const Rational& firstNumber, const Rational& secondNumber);
 
+Rational operator+(const Rational& firstNumber, const Rational& secondNumber) {
+    Rational result = firstNumber;
+    result+= secondNumber;
+
+    return result;
+}
+
+Rational operator-(const Rational& firstNumber, const Rational& secondNumber){
+    Rational result = firstNumber;
+    result -= secondNumber;
+
+    return result;
+}
+
+Rational operator*(const Rational& firstNumber, const Rational& secondNumber) {
+    Rational result = firstNumber;
+    result *= secondNumber;
+
+    return result;
+}
+
+Rational operator/(const Rational& firstNumber, const Rational& secondNumber) {
+    Rational result = firstNumber;
+    result /= secondNumber;
+
+    return result;
+}
+
 
 
 int main() {
 
     using namespace std;
 
-   // Rational num = Rational(3,6);
+   // int a = -7;
+   // int b = 3;
+   // int c = a%b;
+
+    Rational num = Rational(3,6);
+    std::cout <<" Initial number = " << num << std::endl;
+
+    Rational num1 = Rational(10,2);
+    num1+=num;
+    std::cout <<"Number + 5 = " << num1 << std::endl;
 
 
-    std::cout << "dfdfd" << std::endl;
+
+
+
+
     return 0;
 }
 
