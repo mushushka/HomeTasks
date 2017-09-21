@@ -2,10 +2,10 @@
 // Created by Елена Сермягина on 21.09.17.
 //
 
+#include "complex.h"
 
 #include <iostream>
-#include <sstream>
-#include "complex.h"
+
 
 Complex::Complex(const double real)
         : Complex(real, 0.0)
@@ -118,6 +118,7 @@ std::istream& Complex::readFrom(std::istream &istrm)
         }
 
     }
+
     return istrm;
 }
 
