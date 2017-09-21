@@ -3,5 +3,5 @@ project(Complex)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp)
-add_executable(Complex ${SOURCE_FILES})
+set(SOURCE_FILES main.cpp complex.h complex_test.cpp)
+add_executable(Complex ${SOURCE_FILES} complex.cpp)
