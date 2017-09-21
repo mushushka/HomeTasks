@@ -148,7 +148,7 @@ std::istream& Complex::readFrom(std::istream &istrm)
         } else {
             istrm.setstate(std::ios_base::failbit);
         }
-
+//fghjklertkltuk
     }
     return istrm;
 }
