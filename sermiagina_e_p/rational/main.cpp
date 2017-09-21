@@ -8,7 +8,7 @@ using namespace std;
 class Rational {
 
 public:
-
+    ~Rational() = default;
     Rational() {}
     Rational (const int complete): _complete(complete){}
 
@@ -40,7 +40,7 @@ private:
 
     int _complete {0};
     int _natural{1};
-   // ~Rational() = default;
+
 
 //реализация нормализации
    int commonDivivsor(int firstNumber, int secondNumber) {
@@ -173,12 +173,22 @@ int main() {
     std::cout <<" Initial number = " << num << std::endl;
 
     Rational num1 = Rational(10,2);
-    num1+=num;
-    std::cout <<"Number + 5 = " << num1 << std::endl;
+    std::cout <<" Initial number = " << num1 << std::endl;
+
+    num1/=num;
+
+    std::cout <<"Number *= " << num1 << std::endl;
+
+    std::cout <<"Number " << num << std::endl;
+    num/=(1,2);
+    std::cout <<"Number /= 1/2 " << num << std::endl;
+
+   // std::cout <<"Num = " << num << std::endl;
 
 
-
-
+  //  std::cout <<"Number / 10 = " << num << std::endl;
+    Rational num2 = Rational(1,0);
+    std::cout <<"Number  " << num2 << std::endl;
 
 
     return 0;
