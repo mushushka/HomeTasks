@@ -12,6 +12,7 @@ struct Complex {
     Complex() {}
     explicit Complex(const double real);
     Complex(const double real, const double imaginary);
+
     bool operator==(const Complex& rhs) const;
     bool operator!=(const Complex& rhs) const;
     Complex& operator+=(const Complex& rhs);
@@ -20,6 +21,10 @@ struct Complex {
     Complex& operator-=(const double rhs);
     Complex& operator*=(const Complex& rhs);
     Complex& operator*=(const double rhs);
+    Complex& operator/=(const Complex& rhs);
+    Complex& operator/=(const double rhs);
+
+
 
     std::ostream& writeTo(std::ostream& ostrm) const;
     std::istream& readFrom(std::istream& istrm);
@@ -38,7 +43,18 @@ struct Complex {
  std::istream& operator>>(std::istream& istrm, Complex& rhs);
 
  Complex operator+(const Complex& lhs, const Complex& rhs);
+ Complex operator+(const Complex& lhs, const double rhs);
+
  Complex operator-(const Complex& lhs, const Complex& rhs);
+ Complex operator-(const Complex& lhs, const double rhs);
+
+ Complex operator*(const Complex& lhs, const Complex& rhs);
+ Complex operator*(const Complex& lhs, const double rhs);
+
+ Complex operator/(const Complex& lhs, const double rhs);
+ Complex operator/(const Complex& lhs, const Complex& rhs);
+
+
 
 
 #endif //COMPLEX_COMPLEX_H
