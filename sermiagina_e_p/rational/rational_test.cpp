@@ -2,8 +2,6 @@
 // Created by Елена Сермягина on 21.09.17.
 //
 #include "rational.h"
-
-
 #include <iostream>
 
 int main() {
