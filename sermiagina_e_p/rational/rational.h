@@ -13,10 +13,10 @@ class Rational {
 
 public:
 
-    Rational() {}
-    Rational (const int complete) {}
-    Rational(const int complete, const int natural) {}
-    ~Rational() = default;
+    Rational();
+    Rational (const int complete);
+    Rational(const int complete, const int natural);
+   // ~Rational() = default;
 
     //operators
     Rational& operator+=(const Rational& number);
@@ -45,6 +45,7 @@ Rational operator+(const Rational& firstNumber, const Rational& secondNumber);
 Rational operator-(const Rational& firstNumber, const Rational& secondNumber);
 Rational operator/(const Rational& firstNumber, const Rational& secondNumber);
 Rational operator*(const Rational& firstNumber, const Rational& secondNumber);
+
 std::ostream& operator<<(std::ostream& ostr, Rational number);
 
 

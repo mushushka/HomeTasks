@@ -30,7 +30,7 @@ struct Complex {
     std::istream& readFrom(std::istream& istrm);
 
 
-
+    double e = 1E-6;
     double re{0.0};
     double im{0.0};
 
@@ -44,15 +44,20 @@ struct Complex {
 
  Complex operator+(const Complex& lhs, const Complex& rhs);
  Complex operator+(const Complex& lhs, const double rhs);
+ Complex operator+(const double rhs, const Complex& lhs);
+
 
  Complex operator-(const Complex& lhs, const Complex& rhs);
  Complex operator-(const Complex& lhs, const double rhs);
+ Complex operator-(const double rhs, const Complex& lhs);
 
  Complex operator*(const Complex& lhs, const Complex& rhs);
  Complex operator*(const Complex& lhs, const double rhs);
+ Complex operator*(const double rhs, const Complex& lhs);
 
  Complex operator/(const Complex& lhs, const double rhs);
  Complex operator/(const Complex& lhs, const Complex& rhs);
+ Complex operator/(const double rhs, const Complex& lhs);
 
 
 

@@ -4,6 +4,9 @@
 
 #include "complex.h"
 #include <iostream>
+#include <cmath>
+
+using namespace std;
 
 
 Complex::Complex(const double real)
@@ -28,7 +31,8 @@ Complex& Complex::operator+=(const Complex& rhs)
     return *this;
 }
 
-Complex& Complex::operator +=(const double rhs) {
+Complex& Complex::operator +=(const double rhs)
+{
     return operator+=(Complex(rhs));
 }
 
@@ -37,6 +41,10 @@ Complex operator+(const Complex& lhs, const double rhs)
     return Complex(lhs.re + rhs);
 }
 
+Complex operator+(const double rhs, const Complex& lhs)
+{
+    return Complex(lhs.re + rhs);
+}
 
 
 //-
@@ -75,24 +83,35 @@ Complex&  Complex::operator*=(const Complex& rhs)
     return *this;
 }
 
-Complex operator*(const Complex& lhs, const Complex& rhs){
+Complex operator*(const Complex& lhs, const Complex& rhs)
+{
     Complex number(lhs);
     return number*=rhs;
 }
 
-Complex operator*(const Complex& lhs, const double rhs){
+Complex operator*(const Complex& lhs, const double rhs)
+{
 
     return Complex(lhs.re * rhs, lhs.im);
 }
 
+Complex operator*(const double rhs, const Complex& lhs)
+{
+    return Complex(lhs.re * rhs, lhs.im);
+}
+
+
+
 // /
-Complex& Complex::operator/=(const Complex& rhs){
+Complex& Complex::operator/=(const Complex& rhs)
+{
     re = (re*rhs.re + im*rhs.im)/(rhs.re*rhs.re + rhs.im*rhs.im);
     im = (rhs.re*im - re*rhs.im)/(rhs.re*rhs.re + rhs.im*rhs.im);
 
     return *this;
 }
-Complex& Complex::operator/=(const double rhs){
+Complex& Complex::operator/=(const double rhs)
+{
     return operator/=(Complex(rhs));
 }
 
@@ -100,25 +119,33 @@ Complex operator/(const Complex& lhs, const Complex& rhs)
 {
     Complex number(lhs);
     return number/=rhs;
-};
+}
 
 Complex operator/(const Complex& lhs, const double rhs)
 {
     Complex number(lhs);
 
     return number/=rhs;
-};
-
-
-
-
-
-bool Complex::operator==(const Complex& rhs) const {
-
-    return ((re - rhs.re) < 1E-6) && ((im - rhs.im) < 1E-6);
 }
 
-bool Complex::operator!=(const Complex& rhs) const {
+Complex operator/(const double rhs, const Complex& lhs)
+{
+    Complex number(lhs);
+    return number/=rhs;
+}
+
+
+
+
+
+
+bool Complex::operator==(const Complex& rhs) const
+{
+    return (std::abs(re - rhs.re) < e) && (std::abs(im - rhs.im) < e);
+}
+
+bool Complex::operator!=(const Complex& rhs) const
+{
     return !operator==(rhs);
 }
 

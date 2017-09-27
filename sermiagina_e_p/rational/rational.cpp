@@ -3,18 +3,19 @@
 //
 #include "rational.h"
 #include <iostream>
+#include <sstream>
 
 
 using namespace std;
 
-Rational::Rational(const int complete): _complete(complete){}
+Rational::Rational(const int complete): _complete(complete), _natural(1){}
 
 Rational::Rational(const int complete, const int natural)
         : _complete(complete),
           _natural(natural)
 {
-    if (_natural == 0) {
-
+    if (_natural == 0)
+    {
         throw invalid_argument("Zero in natural");
     }
     normalize();
