@@ -28,6 +28,7 @@ public:
     Rational& operator/=(const int number);
     Rational& operator*=(const Rational& number);
     Rational& operator*=(const int number);
+    Rational& operator-();
 
     bool isPositive();
 

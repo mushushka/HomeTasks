@@ -222,6 +222,11 @@ Rational operator-(const int firstNumber, const Rational& secondNumber)
     return result;
 }
 
+//Rational& Rational::operator-()
+//{
+//    _complete *=-1;
+//}
+
 
 //equality
 bool operator==(const Rational& firstNumber, const Rational& secondNumber)

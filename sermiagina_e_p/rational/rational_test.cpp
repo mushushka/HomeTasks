@@ -43,6 +43,17 @@ void mathTest(Rational first, Rational second) {
     Rational one(first);
     Rational two(second);
 
+    cout << endl << "First rational: " << one << endl;
+    cout << "Second rational: " << two << endl;
+
+//    cout << "Plus to minus or minus to plus:" << endl << endl;
+//    cout << "one = " << one << "; -one = ";
+//    cout << -one << endl;
+//    cout << "two = " << two << "; -two = ";
+//    cout << -two << endl;
+
+
+
 
     cout << "Rational and Rational:" << endl << endl;
     cout << one << " + " << two << " = " << (one + two) << endl;
@@ -50,11 +61,11 @@ void mathTest(Rational first, Rational second) {
     cout << one << " * " << two << " = " << (one * two) << endl;
     cout << one << " / " << two << " = " << (one / two) << endl << endl;
 
-    cout << "Rational and Double:" << endl;
-    cout << one << " + " << 7.0 << " = " << (one + 7) << endl;
-    cout << one << " - " << 7.0 << " = " << (one - 7) << endl;
-    cout << one << " * " << 7.0 << " = " << (one * 7) << endl;
-    cout << one << " / " << 7.0 << " = " << (one / 7) << endl << endl;
+    cout << "Rational and Integer:" << endl;
+    cout << one << " + " << 7 << " = " << (one + 7) << endl;
+    cout << one << " - " << 7 << " = " << (one - 7) << endl;
+    cout << one << " * " << 7 << " = " << (one * 7) << endl;
+    cout << one << " / " << 7 << " = " << (one / 7) << endl << endl;
 
     cout << "Double and Rational:" << endl;
     cout << 3.5 << " + " << two << " = " << (one + 7) << endl;
@@ -65,37 +76,37 @@ void mathTest(Rational first, Rational second) {
 
 
 
-    cout << "one = " << one << "; one += 8/2; one = ";
+    cout << "one = " << one << "; one += 7/2; one = ";
     one += Rational{7, 2};
     cout << one << endl;
 
-    cout << "one = " << one << "; one -= 4,2; one = ";
+    cout << "one = " << one << "; one -= 4/2; one = ";
     one -= Rational{4, 2};
     cout << one << endl;
 
-    cout << "one = " << one << "; one *= 2,2; one = ";
+    cout << "one = " << one << "; one *= 2/2; one = ";
     one -= Rational{2, 2};
     cout << one << endl;
 
-    cout << "one = " << one << "; one /= 1,2; one = ";
+    cout << "one = " << one << "; one /= 5/8; one = ";
     one -= Rational{5, 8};
     cout << one << endl;
 
 
-    cout << "one = " << one << "; one += 5.0; one = ";
+    cout << "one = " << one << "; one += 5; one = ";
     one += 5;
     cout << one << endl;
 
-    cout << "one = " << one << "; one -= 2.0; one = ";
+    cout << "one = " << one << "; one -= 2; one = ";
     one -= 2;
     cout << one << endl;
 
-    cout << "one = " << one << "; one *= 3.0; one = ";
+    cout << "one = " << one << "; one *= 3; one = ";
     one *= 3;
     cout << one << endl;
 
-    cout << "one = " << one << "; one /= 3.0; one = ";
-    one /= 1;
+    cout << "one = " << one << "; one /= 4; one = ";
+    one /= 4;
     cout << one << endl;
 
 
@@ -105,7 +116,8 @@ int main() {
 
     equalityTest({7,3},{1,4});
     equalityTest({1,22223},{1,33334});
-    mathTest({2,1}, {3,3});
+    mathTest({3,1}, {5,8});
+    mathTest({-2,-1}, {-3,3});
 
     cout<<endl;
 
