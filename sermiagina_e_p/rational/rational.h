@@ -18,16 +18,22 @@ public:
     Rational(const int complete, const int natural);
    // ~Rational() = default;
 
+
     //operators
     Rational& operator+=(const Rational& number);
+    Rational& operator+=(const int number);
     Rational& operator-=(const Rational& number);
+    Rational& operator-=(const int number);
     Rational& operator/=(const Rational& number);
+    Rational& operator/=(const int number);
     Rational& operator*=(const Rational& number);
+    Rational& operator*=(const int number);
 
     bool isPositive();
 
     std::ostream& writeTo(std::ostream& ostrm) const;
     //std::istream& readFrom(std::istream& istrm);
+    double toDouble();
 
 
 private:
@@ -36,15 +42,37 @@ private:
     int _natural{1};
 
     int commonDivivsor(int firstNumber, int secondNumber);
+    //int leastCommonMultiple(int firstNUmber, int secondNumber);
     void normalize();
 
 
 };
 
 Rational operator+(const Rational& firstNumber, const Rational& secondNumber);
+Rational operator+(const Rational& firstNumber, const int secondNumber);
+Rational operator+(const int firstNumber, const Rational& secondNumber);
+
 Rational operator-(const Rational& firstNumber, const Rational& secondNumber);
+Rational operator-(const Rational& firstNumber, const int secondNumber);
+Rational operator-(const int firstNumber, const Rational& secondNumber);
+
 Rational operator/(const Rational& firstNumber, const Rational& secondNumber);
+Rational operator/(const Rational& firstNumber, const int secondNumber);
+Rational operator/(const int firstNumber, const Rational& secondNumber);
+
 Rational operator*(const Rational& firstNumber, const Rational& secondNumber);
+Rational operator*(const Rational& firstNumber, const int secondNumber);
+Rational operator*(const int firstNumber, const Rational& secondNumber);
+
+bool operator==(const Rational& firstNumber, const Rational& secondNumber);
+bool operator!=(const Rational& firstNumber, const Rational& secondNumber);
+bool operator>=(const Rational& firstNumber, const Rational& secondNumber);
+bool operator<=(const Rational& firstNumber, const Rational& secondNumber);
+bool operator>(const Rational& firstNumber, const Rational& secondNumber);
+bool operator<(const Rational& firstNumber, const Rational& secondNumber);
+
+
+
 
 std::ostream& operator<<(std::ostream& ostr, Rational number);
 
