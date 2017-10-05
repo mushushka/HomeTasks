@@ -112,6 +112,8 @@ void mathTest(Rational first, Rational second) {
 
 }
 
+//add constructors' test
+
 int main() {
 
     equalityTest({7,3},{1,4});

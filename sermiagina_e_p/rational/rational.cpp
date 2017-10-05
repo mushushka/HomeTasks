@@ -17,7 +17,7 @@ Rational::Rational(const int complete, const int natural)
 {
     if (_natural == 0)
     {
-        throw invalid_argument("Zero in natural");
+       // throw invalid_argument("Zero in natural");
     }
     normalize();
     //commonDivivsor(_complete, _natural);
@@ -160,7 +160,7 @@ Rational& Rational::operator+=(const int number)
 
 Rational operator+(const Rational& firstNumber, const Rational& secondNumber)
 {
-    Rational result = firstNumber;
+    Rational result(firstNumber);
     result+= secondNumber;
 
     return result;
@@ -168,7 +168,7 @@ Rational operator+(const Rational& firstNumber, const Rational& secondNumber)
 
 Rational operator+(const Rational& firstNumber, const int secondNumber)
 {
-    Rational result = firstNumber;
+    Rational result(firstNumber);
     result+= secondNumber;
 
     return result;
@@ -176,7 +176,7 @@ Rational operator+(const Rational& firstNumber, const int secondNumber)
 
 Rational operator+(const int firstNumber, const Rational& secondNumber)
 {
-    Rational result = firstNumber;
+    Rational result(firstNumber);
     result+= secondNumber;
 
     return result;
@@ -225,6 +225,11 @@ Rational operator-(const int firstNumber, const Rational& secondNumber)
 //Rational& Rational::operator-()
 //{
 //    _complete *=-1;
+//}
+//
+// Rational operator-()
+//{
+// return Rational(-1*);
 //}
 
 
