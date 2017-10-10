@@ -67,11 +67,11 @@ void mathTest(Rational first, Rational second) {
     cout << one << " * " << 7 << " = " << (one * 7) << endl;
     cout << one << " / " << 7 << " = " << (one / 7) << endl << endl;
 
-    cout << "Double and Rational:" << endl;
-    cout << 3.5 << " + " << two << " = " << (one + 7) << endl;
-    cout << 1.0 << " - " << two << " = " << (one - 7) << endl;
-    cout << 12.0 << " * " << two << " = " << (one * 7) << endl;
-    cout << 2.1 << " / " << two << " = " << (one / 7) << endl << endl;
+    cout << "Integer and Rational:" << endl;
+    cout << 7 << " + " << one << " = " << (one + 7) << endl;
+    cout << 7 << " - " << one << " = " << (one - 7) << endl;
+    cout << 7 << " * " << one << " = " << (one * 7) << endl;
+    cout << 7 << " / " << one << " = " << (one / 7) << endl << endl;
 
 
 
@@ -85,11 +85,11 @@ void mathTest(Rational first, Rational second) {
     cout << one << endl;
 
     cout << "one = " << one << "; one *= 2/2; one = ";
-    one -= Rational{2, 2};
+    one *= Rational{2, 2};
     cout << one << endl;
 
     cout << "one = " << one << "; one /= 5/8; one = ";
-    one -= Rational{5, 8};
+    one /= Rational{5, 8};
     cout << one << endl;
 
 
