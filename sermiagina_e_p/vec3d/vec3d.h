@@ -24,6 +24,7 @@ public:
     double _x{0.0};
     double _y{0.0};
     double _z{0.0};
+    const double e = 1E-6;
 
     //==
     //!=
@@ -32,10 +33,8 @@ public:
     //длина вектора
 
     Vec3d& operator+=(const Vec3d& vector);
-    Vec3d& operator+=(const double number);
 
     Vec3d& operator-=(const Vec3d& vector);
-    Vec3d& operator-=(const double number);
 
     Vec3d& operator*=(const Vec3d& vector);
     Vec3d& operator*=(const double number);
@@ -43,37 +42,32 @@ public:
     Vec3d& operator/=(const Vec3d& vector);
     Vec3d& operator/=(const double number);
 
-    Vec3d& operator==(const Vec3d& vector);
-    Vec3d& operator!=(const Vec3d& vector);
+    bool operator==(const Vec3d& vector) const;
+    bool operator!=(const Vec3d& vector) const;
+
+    double vectorLength();
+    double scalarProduct(const Vec3d& vector);
+    Vec3d  vectorProduct(const Vec3d& vector);
+
+    Vec3d& operator-();
 
 
-
+   // std::istream& readFrom(std::istream& istrm) const;
     std::ostream& writeTo(std::ostream& ostrm) const;
 };
 
 Vec3d operator+(const Vec3d& firstVector, const Vec3d& secondVector);
-Vec3d operator+(const Vec3d& firstVector, const double secondNumber);
-Vec3d operator+(const double firstNumber, const Vec3d& secondVector);
 
 Vec3d operator-(const Vec3d& firstVector, const Vec3d& secondVector);
-Vec3d operator-(const Vec3d& firstVector, const double secondNumber);
-Vec3d operator-(const double firstNumber, const Vec3d& secondVector);
 
-
-Vec3d operator*(const Vec3d& firstVector, const Vec3d& secondVector);
 Vec3d operator*(const Vec3d& firstVector, const double secondNumber);
 Vec3d operator*(const double firstNumber, const Vec3d& secondVector);
 
-
-Vec3d operator/(const Vec3d& firstVector, const Vec3d& secondVector);
 Vec3d operator/(const Vec3d& firstVector, const double secondNumber);
-Vec3d operator/(const double firstNumber, const Vec3d& secondVector);
+//Vec3d operator/(const double firstNumber, const Vec3d& secondVector);
 
 
-
-
-
-
+//std::istream& operator >> (std::istream& istrm, Vec3d& rhs);
 std::ostream& operator<<(std::ostream& ostr, Vec3d vector);
 
 #endif //VEC3D_VEC3D_H
