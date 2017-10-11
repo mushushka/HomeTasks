@@ -113,9 +113,9 @@ Vec3d& Vec3d::operator/=(const double number)
 
 Vec3d& Vec3d::operator-()
 {
-    Vec3d temp = *this;
-    temp*=-1;
-    return temp;
+   // Vec3d temp = *this;
+    *this*=-1;
+    return *this;
 }
 
 double Vec3d::vectorLength()

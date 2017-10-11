@@ -104,6 +104,16 @@ int main() {
 
     mathTest({1.0, 2.0, 4.0},{22.0, 1.2, 8.0});
 
+    Vec3d vec1;
+    cout << "Empty constructor: "<< vec1 << endl;
+
+    Vec3d vec2(2.0, 3.0, 1.0);
+    cout << "Constructor with 3 parameters: "<< vec2 << endl;
+
+    Vec3d vec3(vec2);
+    cout << "Copying constructor: "<< vec3 << endl;
+
+
 
 
 
