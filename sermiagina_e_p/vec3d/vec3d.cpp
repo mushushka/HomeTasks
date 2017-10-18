@@ -74,20 +74,13 @@ Vec3d& Vec3d::operator-=(const Vec3d& vector)
     return *this;
 }
 
-Vec3d& Vec3d::operator*=(const Vec3d& vector)
-{
-    _x *= vector._x;
-    _y *= vector._y;
-    _z *= vector._z;
 
-    return *this;
-}
 
-Vec3d& Vec3d::operator/=(const Vec3d& vector)
+Vec3d& Vec3d::operator/=(const double number)
 {
-    _x /= vector._x;
-    _y /= vector._y;
-    _z /= vector._z;
+    _x /= number;
+    _y /= number;
+    _z /= number;
 
     return *this;
 }
@@ -101,14 +94,7 @@ Vec3d& Vec3d::operator*=(const double number)
     return *this;
 }
 
-Vec3d& Vec3d::operator/=(const double number)
-{
-    _x /= number;
-    _y /= number;
-    _z /= number;
 
-    return *this;
-}
 
 
 Vec3d& Vec3d::operator-()

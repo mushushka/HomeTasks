@@ -33,13 +33,8 @@ public:
     //длина вектора
 
     Vec3d& operator+=(const Vec3d& vector);
-
     Vec3d& operator-=(const Vec3d& vector);
-
-    Vec3d& operator*=(const Vec3d& vector);
     Vec3d& operator*=(const double number);
-
-    Vec3d& operator/=(const Vec3d& vector);
     Vec3d& operator/=(const double number);
 
     bool operator==(const Vec3d& vector) const;
@@ -69,5 +64,9 @@ Vec3d operator/(const Vec3d& firstVector, const double secondNumber);
 
 //std::istream& operator >> (std::istream& istrm, Vec3d& rhs);
 std::ostream& operator<<(std::ostream& ostr, Vec3d vector);
+
+
+
+
 
 #endif //VEC3D_VEC3D_H
