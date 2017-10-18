@@ -46,11 +46,11 @@ void mathTest(Rational first, Rational second) {
     cout << endl << "First rational: " << one << endl;
     cout << "Second rational: " << two << endl;
 
-//    cout << "Plus to minus or minus to plus:" << endl << endl;
-//    cout << "one = " << one << "; -one = ";
-//    cout << -one << endl;
-//    cout << "two = " << two << "; -two = ";
-//    cout << -two << endl;
+    cout << "Plus to minus or minus to plus:" << endl << endl;
+    cout << "one = " << one << "; -one = ";
+    cout << -one << endl;
+    cout << "two = " << two << "; -two = ";
+    cout << -two << endl;
 
 
 

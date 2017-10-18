@@ -227,10 +227,10 @@ Rational operator-(const int firstNumber, const Rational& secondNumber)
 //    _complete *=-1;
 //}
 //
-// Rational operator-()
-//{
-// return Rational(-1*);
-//}
+ Rational& Rational::operator-()
+{
+ return *this*=-1;
+}
 
 
 //equality
