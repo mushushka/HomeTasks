@@ -112,7 +112,10 @@ int main() {
     //mathTest(Vec3dT<double>(4.0, 5.0, 2.0), Vec3dT<double>(1.0, 8.0, 62.2));
     equalityTest(Vec3dT<double>{1.1, 1.2, 1.22224},Vec3dT<double>{1.1, 1.2, 1.22221});
     equalityTest(Vec3dT<double>{-5.0, 1.0, 1.0},Vec3dT<double>{5.0, 1.0, 1.0});
-    equalityTest(Vec3dT<double>{-5.0, 1.0, 1.0},Vec3dT<double>{-5.0, 1.0, 1.0});
+    equalityTest(Vec3dT<float>{-5.0, 1.0, 1.0},Vec3dT<float>{-5.0, 1.0, 1.0});
+    equalityTest(Vec3dT<int>{-5, 1, 1},Vec3dT<int>{-5, 1, 1});
+    equalityTest(Vec3dT<int>{-58998989, 1, 1},Vec3dT<int>{-58998989, 1, 1});
+
 
 
 

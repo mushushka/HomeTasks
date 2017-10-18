@@ -27,26 +27,24 @@ public:
     T _x{T()};
     T _y{T()};
     T _z{T()};
-    const double e = 10E-6;
+    const double e = 1E-6;
 
     Vec3dT<T>& operator+=(const Vec3dT<T>& vector);
-
     Vec3dT<T>& operator-=(const Vec3dT<T>& vector);
-
-
     Vec3dT<T>& operator*=(const T number);
-
-
     Vec3dT<T>& operator/=(const T number);
-
     Vec3dT<T>& operator=(const Vec3dT<T>& v);
 
-    bool operator==(const Vec3dT<T>& vector) const;
-    bool operator!=(const Vec3dT<T>& vector) const;
+    bool operator==(const Vec3dT<T>& vector);
+    bool operator!=(const Vec3dT<T>& vector);
 
     double vectorLength();
     double scalarProduct(const Vec3dT<T>& vector);
     Vec3dT<T>  vectorProduct(const Vec3dT<T>& vector);
+//    bool compareTo(const Vec3dT<double>& vector);
+//    bool compareTo(const Vec3dT<float>& vector);
+    bool compareTo(const Vec3dT<T>& vector);
+
 
     Vec3dT<T>& operator-();
 
@@ -180,14 +178,14 @@ Vec3dT<T>& Vec3dT<T>::operator=(const Vec3dT<T>& v)
 
     return *this;
 }
-//
-//template<typename T>
-//Vec3dT<T>& Vec3dT<T>::operator-()
-//{
-//
-//    *this *= -1;
-//    return *this;
-//}
+
+template<typename T>
+Vec3dT<T>& Vec3dT<T>::operator-()
+{
+
+    *this *= -1;
+    return *this;
+}
 
 template<typename T>
 double Vec3dT<T>::vectorLength()
@@ -210,14 +208,32 @@ Vec3dT<T> Vec3dT<T>::vectorProduct(const Vec3dT<T>& vector)
     return temp;
 }
 
+template<typename  T>
+bool Vec3dT<T>::operator==(const Vec3dT<T>& vector)
+{
+    return compareTo(vector);
+}
+
 template<typename T>
-bool Vec3dT<T>::operator==(const Vec3dT<T>& vector) const
+bool Vec3dT<T>::compareTo(const Vec3dT<T>& vector)
+{
+return (_x == vector._x && _y == vector._y && _z == vector._z);
+}
+
+template<>
+bool Vec3dT<float>::compareTo(const Vec3dT<float>& vector)
+{
+    return (fabs(_x - vector._x < e))&&(fabs(_y - vector._y < e))&&(fabs(_z - vector._z < e));
+}
+
+template<>
+bool Vec3dT<double>::compareTo(const Vec3dT<double>& vector)
 {
     return (fabs(_x - vector._x < e))&&(fabs(_y - vector._y < e))&&(fabs(_z - vector._z < e));
 }
 
 template<typename T>
-bool Vec3dT<T>::operator!=(const Vec3dT<T>& vector) const
+bool Vec3dT<T>::operator!=(const Vec3dT<T>& vector)
 {
     return !operator==(vector);
 }
