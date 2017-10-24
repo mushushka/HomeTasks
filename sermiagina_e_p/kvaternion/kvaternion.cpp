@@ -5,6 +5,8 @@
 #include <sstream>
 #include "kvaternion.h"
 
+using namespace std;
+
 Kvaternion::Kvaternion( const double _i1, const double _i2, const double _j1, const double _j2):
    i11(_i1),
    i12(_i2),
@@ -26,12 +28,14 @@ i22(kva.i22){}
 std::ostream& Kvaternion::writeTo(std::ostream& ostrm) const
 {
     ostrm << "{" << i11 << "," << i12 << "}, " << "{" << i21 << "," << i22 << "}";
+    return ostrm;
 }
 
 std::ostream& operator<<(std::ostream& ostr, Kvaternion kva)
 {
     return kva.writeTo(ostr);
 }
+
 
 Kvaternion& Kvaternion::operator*=(Kvaternion& kva)
 {

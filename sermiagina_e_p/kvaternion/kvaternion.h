@@ -1,4 +1,4 @@
-//
+ //
 // Created by Елена Сермягина on 19.10.2017.
 //
 
@@ -22,14 +22,14 @@ struct Kvaternion
     Kvaternion& operator*=(Kvaternion& kva);
     double Determinator(Kvaternion& kva);
 
-    std::ostream& writeTo(std::ostream& ostrm) const;
 
+    std::ostream& writeTo(std::ostream& ostrm) const;
 
 
 
 };
 
-std::ostream& operator<<(std::ostream& ostrm, Kvaternion kva);
+std::ostream& operator<<(std::ostream& ostr, Kvaternion kva);
 
 #endif //KVATERNION_KVATERNION_H
 

@@ -6,12 +6,13 @@
 #include <sstream>
 #include "kvaternion.h"
 
+using namespace std;
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
     Kvaternion cv(2.0, 3.0, 4.0, 5.0);
-    Kvaternion c();
+    Kvaternion c;
     Kvaternion cva(cv);
 
     Kvaternion kv(2.0, 3.0, 4.0, 6.0);
@@ -20,7 +21,7 @@ int main() {
    // c = {3.0, 2.0, 1.0, 2.0};
 
 
-   // std::cout << c << std::endl;
-   // std::cout << cv << std::endl;
+   std::cout << c << std::endl;
+   std::cout << cv << std::endl;
     return 0;
 }
