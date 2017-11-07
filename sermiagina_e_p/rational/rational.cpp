@@ -17,7 +17,7 @@ Rational::Rational(const int complete, const int natural)
 {
     if (_natural == 0)
     {
-       // throw invalid_argument("Zero in natural");
+        throw invalid_argument("Error: zero in devisor");
     }
     normalize();
     //commonDivivsor(_complete, _natural);

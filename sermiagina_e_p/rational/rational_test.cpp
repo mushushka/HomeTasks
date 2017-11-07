@@ -123,6 +123,11 @@ int main() {
 
     cout<<endl;
 
+    try{
+        Rational zero(3,0);
+    } catch ( const invalid_argument& e ){
+       cout << e.what() << endl;
+    };
 
 
 
