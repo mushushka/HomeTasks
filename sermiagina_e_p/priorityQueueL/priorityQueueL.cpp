@@ -8,63 +8,64 @@
 using namespace std;
 
 PriorityQueueL::~PriorityQueueL() {
-    while (!isEmpty()){
+    while (!isEmpty()) {
         pop();
     }
 }
-PriorityQueueL::Node::Node(Node* pNext):
+
+PriorityQueueL::Node::Node(Node *pNext) :
         pNext_(pNext),
-        data_(double(0.0)){
+        data_(double(0.0)) {
 
 }
 
-PriorityQueueL::Node::Node(Node* pNext, const double& value):
+PriorityQueueL::Node::Node(Node *pNext, const double &value) :
         pNext_(pNext),
-        data_(value){
+        data_(value) {
 
 
 }
 
-PriorityQueueL::PriorityQueueL(const PriorityQueueL& copyPriorityQueueL){
-   // PriorityQueueL queue;
-    Node* pCopyFrom(copyPriorityQueueL.pHead_);
-   // Node* pCopyTo(pHead_);
-     while(pCopyFrom != nullptr){
+PriorityQueueL::PriorityQueueL(const PriorityQueueL &copyPriorityQueueL) {
+    // PriorityQueueL queue;
+    Node *pCopyFrom(copyPriorityQueueL.pHead_);
+    // Node* pCopyTo(pHead_);
+    while (pCopyFrom != nullptr) {
 
-         push(pCopyFrom -> data_);
-         pCopyFrom = pCopyFrom -> pNext_;
+        push(pCopyFrom->data_);
+        pCopyFrom = pCopyFrom->pNext_;
         // pCopyTo -> pNext_ = new Node(nullptr, pCopyFrom -> data_);
 
-     }
+    }
 }
 
-PriorityQueueL& PriorityQueueL::operator=(const PriorityQueueL& copyPriorityQueueL){
-    Node* pCopyFrom(copyPriorityQueueL.pHead_);
-    Node* pCopyTo(pHead_);
+PriorityQueueL &PriorityQueueL::operator=(const PriorityQueueL &copyPriorityQueueL) {
+    Node *pCopyFrom(copyPriorityQueueL.pHead_);
+    Node *pCopyTo(pHead_);
 
-       while (pCopyFrom != copyPriorityQueueL.pTail_ && pCopyTo != pTail_){
+    while (pCopyFrom != copyPriorityQueueL.pTail_ && pCopyTo != pTail_) {
 
-           pCopyTo -> data_ = pCopyFrom -> data_;
-           pCopyFrom = pCopyFrom -> pNext_;
-           pCopyTo = pCopyTo -> pNext_;
-       }
-    if (pCopyFrom == copyPriorityQueueL.pTail_ && pCopyTo != pTail_){
+        pCopyTo->data_ = pCopyFrom->data_;
+        pCopyFrom = pCopyFrom->pNext_;
+        pCopyTo = pCopyTo->pNext_;
+    }
+    if (pCopyFrom == copyPriorityQueueL.pTail_ && pCopyTo != pTail_) {
 
-        pCopyTo -> data_ = pCopyFrom -> data_;
+        pCopyTo->data_ = pCopyFrom->data_;
         while (pCopyTo != nullptr) {
-            Node* pDeleted(pCopyTo);
-            pCopyTo = pDeleted -> pNext_;
+            Node *pDeleted(pCopyTo);
+            pCopyTo = pDeleted->pNext_;
             delete pDeleted;
 
         }
 
-    } else if (pCopyFrom != copyPriorityQueueL.pTail_ && pCopyTo == pTail_){
+    } else if (pCopyFrom != copyPriorityQueueL.pTail_ && pCopyTo == pTail_) {
 
-        pCopyTo -> data_ = pCopyFrom -> data_;
+        pCopyTo->data_ = pCopyFrom->data_;
         while (pCopyFrom != nullptr) {
 
-            push(pCopyFrom ->data_);
-           pCopyFrom = pCopyFrom -> pNext_;
+            push(pCopyFrom->data_);
+            pCopyFrom = pCopyFrom->pNext_;
 
         }
     }
@@ -74,24 +75,24 @@ PriorityQueueL& PriorityQueueL::operator=(const PriorityQueueL& copyPriorityQueu
 
 }
 
-void PriorityQueueL::push(const double& value){
-    if(isEmpty()){
-        pHead_ = new Node(nullptr,value);
+void PriorityQueueL::push(const double &value) {
+    if (isEmpty()) {
+        pHead_ = new Node(nullptr, value);
         pTail_ = pHead_;
     } else {
-        Node* temp(pHead_);
-        Node* previous(nullptr);
+        Node *temp(pHead_);
+        Node *previous(nullptr);
 //        pTail_ -> pNext_ = new Node(nullptr, value);
 //        pTail_ = pTail_ -> pNext_;
-        while (value - (temp->data_) > e || temp != pTail_ ) {
+        while (value - (temp->data_) > e || temp != pTail_) {
             previous = temp;
             temp = temp->pNext_;
 
         }
-        Node* newNode = new Node(temp,value);
+        Node *newNode = new Node(temp, value);
 
-        if(previous != nullptr) {
-            previous -> pNext_ = newNode;
+        if (previous != nullptr) {
+            previous->pNext_ = newNode;
         } else {
 
         }
@@ -99,38 +100,41 @@ void PriorityQueueL::push(const double& value){
 
 }
 
-void PriorityQueueL::pop(){
+void PriorityQueueL::pop() {
     if (isEmpty()) {
         throw invalid_argument("Hey, you! It's empty! :(");
     }
-    Node* pDeleted(pHead_);
-    pHead_ = pDeleted -> pNext_;
+    Node *pDeleted(pHead_);
+    pHead_ = pDeleted->pNext_;
     delete pDeleted;
 
 
 }
 
-bool PriorityQueueL::isEmpty() const{
+bool PriorityQueueL::isEmpty() const {
     return (pHead_ == nullptr);
 }
-double& PriorityQueueL::last(){
-    return pTail_ -> data_;
-}
-const double& PriorityQueueL::last() const {
-    return pTail_ -> data_;
+
+double &PriorityQueueL::last() {
+    return pTail_->data_;
 }
 
-const double& PriorityQueueL::first() const{
-    return pHead_ -> data_;
-}
-double& PriorityQueueL::first(){
-    return pHead_ -> data_;
+const double &PriorityQueueL::last() const {
+    return pTail_->data_;
 }
 
-std::ostream& PriorityQueueL::writeTo(std::ostream& ostrm) const{
-    if (!isEmpty()){
+const double &PriorityQueueL::first() const {
+    return pHead_->data_;
+}
+
+double &PriorityQueueL::first() {
+    return pHead_->data_;
+}
+
+std::ostream &PriorityQueueL::writeTo(std::ostream &ostrm) const {
+    if (!isEmpty()) {
         PriorityQueueL tempQueue(*this);
-        while (!tempQueue.isEmpty()){
+        while (!tempQueue.isEmpty()) {
             ostrm << tempQueue.first() << endl;
             tempQueue.pop();
         }
@@ -140,6 +144,6 @@ std::ostream& PriorityQueueL::writeTo(std::ostream& ostrm) const{
     return ostrm;
 }
 
-std::ostream& operator<<(std::ostream& ostrm, const PriorityQueueL& queue){
+std::ostream &operator<<(std::ostream &ostrm, const PriorityQueueL &queue) {
     return queue.writeTo(ostrm);
 }
