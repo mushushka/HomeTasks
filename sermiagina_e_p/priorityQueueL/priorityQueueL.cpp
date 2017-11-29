@@ -76,26 +76,24 @@ PriorityQueueL &PriorityQueueL::operator=(const PriorityQueueL &copyPriorityQueu
 }
 
 void PriorityQueueL::push(const double &value) {
+    Node *temp;
     if (isEmpty()) {
         pHead_ = new Node(nullptr, value);
         pTail_ = pHead_;
     } else {
-        Node *temp(pHead_);
-        Node *previous(nullptr);
-//        pTail_ -> pNext_ = new Node(nullptr, value);
-//        pTail_ = pTail_ -> pNext_;
-        while (value - (temp->data_) > e || temp != pTail_) {
-            previous = temp;
-            temp = temp->pNext_;
+        if (value - pHead_->data_ > e) {
+            pHead_ = new Node(pHead_, value);
 
-        }
-        Node *newNode = new Node(temp, value);
-
-        if (previous != nullptr) {
-            previous->pNext_ = newNode;
         } else {
+            temp = pHead_;
+            while (temp->pNext_ != nullptr && value - temp->pNext_->data_ <= e) {
+                temp = temp->pNext_;
+            }
+            Node *newNode = temp->pNext_;
+            temp->pNext_ = new Node(newNode, value);
 
         }
+
     }
 
 }

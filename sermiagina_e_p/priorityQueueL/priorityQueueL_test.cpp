@@ -10,10 +10,10 @@ using namespace std;
 int main() {
     PriorityQueueL que;
     que.push(11.3);
-    que.push(11.4);
+    que.push(12.4);
     que.push(2.2);
-    que.push(10.3);
-    que.push(34.4);
+   que.push(10.3);
+   que.push(34.4);
     que.push(72.2);
     cout << endl << que << endl;
     que.pop();
