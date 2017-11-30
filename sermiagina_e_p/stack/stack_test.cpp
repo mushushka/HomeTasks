@@ -31,8 +31,8 @@ int main() {
     cout << "Stack2" << endl << stack2 << endl;
 
 
-    stack = stack2;
-    cout << "Stack = stack2" << endl << stack << endl;
+    stack2 = stack;
+    cout << "Stack2 = stack" << endl << stack2 << endl;
 
 
      Stack stack3;

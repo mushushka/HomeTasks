@@ -40,7 +40,7 @@ Stack& Stack::operator=(const Stack &copyStack){
     }
     if (pCopyFrom == copyStack.pHead_ && pCopyTo != pHead_) {
 
-        pCopyTo->data_ = pCopyFrom->data_;
+       // pCopyTo->data_ = pCopyFrom->data_;
         while (pCopyTo != nullptr) {
             Node *pDeleted(pCopyTo);
             pCopyTo = pDeleted->pNext_;
@@ -50,7 +50,7 @@ Stack& Stack::operator=(const Stack &copyStack){
 
     } else if (pCopyFrom != copyStack.pHead_ && pCopyTo == pHead_) {
 
-        pCopyTo->data_ = pCopyFrom->data_;
+       // pCopyTo->data_ = pCopyFrom->data_;
         while (pCopyFrom != nullptr) {
 
             push(pCopyFrom->data_);
