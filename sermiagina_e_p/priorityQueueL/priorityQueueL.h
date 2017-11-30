@@ -22,9 +22,11 @@ public:
 
     void pop();
 
-    double &last();
+    void clear();
 
-    const double &last() const;
+    void error() const;
+
+    void copy(const PriorityQueueL &copyPriorityQueueL);
 
     const double &first() const;
 
