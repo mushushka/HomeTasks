@@ -25,14 +25,27 @@ int main() {
     stack2.push('b');
     stack2.push('x');
     stack2.push('a');
-    stack2.push('w');
-    stack2.push('q');
-    stack2.push('r');
+//    stack2.push('w');
+//    stack2.push('q');
+//    stack2.push('r');
     cout << "Stack2" << endl << stack2 << endl;
 
 
-    stack2 = stack;
-    cout << "Stack2 = stack" << endl << stack2 << endl;
+  //  stack = stack2;
+    //Stack stack4(stack);
+    //stack4 = stack2;
+ //   cout << "Stack = stack2" << endl << stack << endl;
+   // cout << "Stack4" << endl << stack4 << endl;
+    Stack stack4(stack2);
+     cout << "Stack4" << endl << stack4 << endl;
+
+    stack4 = stack;
+    cout << "Stack4 = stack" << endl << stack4 << endl;
+
+    stack4 = stack2;
+    cout << "Stack4 = stack2" << endl << stack4 << endl;
+
+
 
 
      Stack stack3;

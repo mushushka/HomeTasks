@@ -18,46 +18,57 @@ Stack::~Stack() {
 }
 
 Stack::Stack(const Stack &copyStack) {
-    //Stack Stacky;
-    Node *pCopyFrom(copyStack.pHead_);
+    // Stack Stacky;
+//    Node *pCopyFrom(copyStack.pHead_);
+//    Node *pCopyTo();
+//    while (pCopyFrom != nullptr) {
+//        push(pCopyFrom->data_);
+//        pCopyFrom = pCopyFrom->pNext_;
+//    }
+    //  pCopyFrom = pCopyFrom->pNext_;
+    //   pCopyTo -> pNext = new Node(nullptr,value );
+    Node *pCopyFrom(copyStack.pHead_->pNext_);
+    Node *pCopyTo = new Node(nullptr, copyStack.pHead_->data_);
+    pHead_ = pCopyTo;
     while (pCopyFrom != nullptr) {
-        push(pCopyFrom->data_);
+        pCopyTo->pNext_ = new Node(nullptr, pCopyFrom->data_);
+        pCopyTo = pCopyTo->pNext_;
         pCopyFrom = pCopyFrom->pNext_;
     }
-    // pCopyFrom = pCopyFrom->pNext_;
-    // pCopyTo -> pNext = new Node(nullptr,value );
 }
 
-Stack& Stack::operator=(const Stack &copyStack){
+Stack &Stack::operator=(const Stack &copyStack) {
     Node *pCopyFrom(copyStack.pHead_);
     Node *pCopyTo(pHead_);
 
-    while (pCopyFrom != copyStack.pHead_ && pCopyTo != pHead_) {
+    while (pCopyFrom->pNext_ != nullptr && pCopyTo->pNext_ != nullptr) {
 
         pCopyTo->data_ = pCopyFrom->data_;
         pCopyFrom = pCopyFrom->pNext_;
         pCopyTo = pCopyTo->pNext_;
     }
-    if (pCopyFrom == copyStack.pHead_ && pCopyTo != pHead_) {
-
-       // pCopyTo->data_ = pCopyFrom->data_;
-        while (pCopyTo != nullptr) {
-            Node *pDeleted(pCopyTo);
-            pCopyTo = pDeleted->pNext_;
+    
+    if (pCopyFrom->pNext_ == nullptr && pCopyTo->pNext_ != nullptr) {
+        pCopyTo->data_ = pCopyFrom->data_;
+        Node *pDeleted;
+        while (pCopyTo->pNext_ != nullptr) {
+            pDeleted = pCopyTo->pNext_;
+            pCopyTo->pNext_ = pDeleted->pNext_;
             delete pDeleted;
-
-        }
-
-    } else if (pCopyFrom != copyStack.pHead_ && pCopyTo == pHead_) {
-
-       // pCopyTo->data_ = pCopyFrom->data_;
-        while (pCopyFrom != nullptr) {
-
-            push(pCopyFrom->data_);
-            pCopyFrom = pCopyFrom->pNext_;
-
         }
     }
+
+    if (pCopyTo->pNext_ == nullptr && pCopyFrom->pNext_ != nullptr) {
+        pCopyTo->data_ = pCopyFrom->data_;
+        pCopyFrom = pCopyFrom->pNext_;
+        while (pCopyFrom != nullptr) {
+            pCopyTo->pNext_ = new Node(nullptr, pCopyFrom->data_);
+            pCopyTo = pCopyTo->pNext_;
+            pCopyFrom = pCopyFrom->pNext_;
+        }
+    }
+
+
 
 
     return *this;
