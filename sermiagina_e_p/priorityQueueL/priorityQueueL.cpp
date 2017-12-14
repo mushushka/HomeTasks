@@ -31,46 +31,70 @@ PriorityQueueL &PriorityQueueL::operator=(const PriorityQueueL &copyPriorityQueu
     if (this->isEmpty()) {
         this->copy(copyPriorityQueueL);
     }
-    if (!this->isEmpty() && !copyPriorityQueueL.isEmpty()) {
-        Node *pCopyFrom(copyPriorityQueueL.pHead_);
-        Node *pCopyTo(pHead_);
+
+    Node *pCopyFrom(copyPriorityQueueL.pHead_);
+    Node *pCopyTo(pHead_);
+
+    while (pCopyFrom->pNext_ != nullptr && pCopyTo->pNext_ != nullptr) {
+
         pCopyTo->data_ = pCopyFrom->data_;
+        pCopyFrom = pCopyFrom->pNext_;
+        pCopyTo = pCopyTo->pNext_;
+    }
 
-        while (pCopyFrom->pNext_ != nullptr && pCopyTo->pNext_ != nullptr) {
-            pCopyFrom = pCopyFrom->pNext_;
-            pCopyTo = pCopyTo->pNext_;
-            pCopyTo->data_ = pCopyFrom->data_;
-        }
-
-        if (pCopyTo->pNext_ == nullptr) {
-            while (pCopyFrom->pNext_ != nullptr) {
-                pCopyTo->pNext_ = new Node(nullptr, pCopyFrom->pNext_->data_);
-                pCopyTo = pCopyTo->pNext_;
-                pCopyFrom = pCopyFrom->pNext_;
-
-            }
-        }
-//        if (pCopyFrom == copyStack.pHead_ && pCopyTo != pHead_) {
-//
-//            // pCopyTo->data_ = pCopyFrom->data_;
-//            while (pCopyTo != nullptr) {
-//                Node *pDeleted(pCopyTo);
-//                pCopyTo = pDeleted->pNext_;
-//                delete pDeleted;
-//
-//            }
-        if (pCopyFrom == nullptr) {
-           // pCopyTo->data_ = pCopyFrom->data_;
-            while (pCopyTo->pNext_ != nullptr) {
-                Node *temp(pCopyTo);
-                pCopyTo = temp->pNext_;
-               // temp = pCopyTo;
-                delete temp;
-
-
-            }
+    if (pCopyFrom->pNext_ == nullptr && pCopyTo->pNext_ != nullptr) {
+        pCopyTo->data_ = pCopyFrom->data_;
+        Node *pDeleted;
+        while (pCopyTo->pNext_ != nullptr) {
+            pDeleted = pCopyTo->pNext_;
+            pCopyTo->pNext_ = pDeleted->pNext_;
+            delete pDeleted;
         }
     }
+
+    if (pCopyTo->pNext_ == nullptr && pCopyFrom->pNext_ != nullptr) {
+        pCopyTo->data_ = pCopyFrom->data_;
+        pCopyFrom = pCopyFrom->pNext_;
+        while (pCopyFrom != nullptr) {
+            pCopyTo->pNext_ = new Node(nullptr, pCopyFrom->data_);
+            pCopyTo = pCopyTo->pNext_;
+            pCopyFrom = pCopyFrom->pNext_;
+        }
+    }
+
+
+//    if (!this->isEmpty() && !copyPriorityQueueL.isEmpty()) {
+//        Node *pCopyFrom(copyPriorityQueueL.pHead_);
+//        Node *pCopyTo(pHead_);
+//        pCopyTo->data_ = pCopyFrom->data_;
+//
+//        while (pCopyFrom->pNext_ != nullptr && pCopyTo->pNext_ != nullptr) {
+//            pCopyFrom = pCopyFrom->pNext_;
+//            pCopyTo = pCopyTo->pNext_;
+//            pCopyTo->data_ = pCopyFrom->data_;
+//        }
+//
+//        if (pCopyTo->pNext_ == nullptr) {
+//            while (pCopyFrom->pNext_ != nullptr) {
+//                pCopyTo->pNext_ = new Node(nullptr, pCopyFrom->pNext_->data_);
+//                pCopyTo = pCopyTo->pNext_;
+//                pCopyFrom = pCopyFrom->pNext_;
+//
+//            }
+//        }
+//
+//        if (pCopyFrom == nullptr) {
+//           // pCopyTo->data_ = pCopyFrom->data_;
+//            while (pCopyTo != nullptr) {
+//                Node *pDelete(pCopyTo);
+//                pCopyTo = pDelete->pNext_;
+//               // temp = pCopyTo;
+//                delete pDelete;
+//
+//
+//            }
+//        }
+//    }
 
     return *this;
 
