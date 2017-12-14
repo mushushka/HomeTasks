@@ -100,6 +100,16 @@ int main() {
     cout << "The third" << endl << que3 << endl;
     cout << "The fourth" << endl << que4 << endl;
 
+    cout << endl << "Do some bad things:" << endl;
+    PriorityQueueL wowQue;
+
+    try {
+        wowQue.first();
+    } catch (invalid_argument &e) {
+        cout << e.what() << endl;
+    }
+
+
 
 
 
