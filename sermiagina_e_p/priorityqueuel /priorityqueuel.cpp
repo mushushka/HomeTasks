@@ -1,7 +1,7 @@
 //
 // Created by Елена Сермягина on 22.11.2017.
 //
-#include "priorityQueueL.h"
+#include "priorityqueuel.h"
 #include <iostream>
 
 using namespace std;
@@ -128,7 +128,6 @@ void PriorityQueueL::pop() {
     Node *pDeleted(pHead_);
     pHead_ = pDeleted->pNext_;
     delete pDeleted;
-
 
 }
 

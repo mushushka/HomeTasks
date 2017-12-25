@@ -2,48 +2,12 @@
 // Created by Елена Сермягина on 25.11.2017.
 //
 
-#include "priorityQueueL.h"
+#include "priorityqueuel.h"
 #include <iostream>
 
 using namespace std;
 
 int main() {
-//    PriorityQueueL que;
-//    que.push(11.3);
-//    que.push(12.4);
-//    que.push(2.2);
-//   que.push(10.3);
-//   que.push(34.4);
-//    que.push(72.2);
-//    cout << endl << que << endl;
-//    que.pop();
-//    cout << que << endl;
-//    que.push(100.1);
-//    cout << que << endl;
-//
-//    PriorityQueueL que1(que);
-//    cout << "copy :" << endl << que1 << endl;
-//
-//    PriorityQueueL que2;
-//    que2.push(341.3);
-//    que2.push(1341.4);
-//    que2.push(342.2);
-//    que2.push(3410.3);
-//    que2.push(334.4);
-//    que2.push(372.2);
-//
-//    cout << "2:" << endl << que2 << endl;
-//
-//    que2 = que1;
-//    cout << "new:" << endl << que2 << endl;
-//
-//    que2.pop();
-//    cout << "pop que2:" << endl << que2 << endl;
-//    que2 = que1;
-//    cout << "que2 = que1:" << endl << que2 << endl;
-//
-//    PriorityQueueL queNew;
-//    cout << queNew <<  "dfdffd" <<endl;
 
     cout << endl << "Hello, queues!" << endl;
 
@@ -61,7 +25,8 @@ int main() {
     que2.push(342.2);
     cout << que2 << endl;
 
-    cout << endl << "Each of them has 3 numbers. Let's pop one number from the first one and push to the second one." << endl;
+    cout << endl << "Each of them has 3 numbers. Let's pop one number from the first one and push to the second one."
+         << endl;
     que.pop();
     que2.push(100500);
     cout << "The first" << endl << que << endl;
@@ -92,7 +57,9 @@ int main() {
     cout << "The third" << endl << que3 << endl;
     cout << "The fourth" << endl << que4 << endl;
 
-    cout << endl << "Okay, they are friends now. The first one will be with the third and the second one - with the fourth" << endl;
+    cout << endl
+         << "Okay, they are friends now. The first one will be with the third and the second one - with the fourth"
+         << endl;
     que = que3;
     que4 = que2;
     cout << "The first" << endl << que << endl;
@@ -101,30 +68,17 @@ int main() {
     cout << "The fourth" << endl << que4 << endl;
 
     cout << endl << "Do some bad things:" << endl;
-    PriorityQueueL wowQue;
+    PriorityQueueL wowQueue;
 
     try {
-        wowQue.first();
+        wowQueue.first();
     } catch (invalid_argument &e) {
         cout << e.what() << endl;
     }
 
+    cout << endl << "Hey, is wowQue empty?:" << endl;
+    cout << "wowQue: " << wowQueue;
 
-
-
-
-
-//    PriorityQueueL que3;
-//    que = que3;
-//    cout << que << endl;
-//    PriorityQueueL que4(que2);
-//    cout << que4 << endl;
-//
-//    que4.first() = que4.first() + 100000;
-//    cout << que4 << endl;
-//
-//    que4.pop();
-//    cout << que4 << endl;
 
     return 0;
 }
