@@ -31,6 +31,7 @@ public:
 
 private:
     int iTop{0};
+    int capacity{4};
     int size{0};
     int *data{nullptr};
 };

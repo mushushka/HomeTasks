@@ -8,8 +8,8 @@
 using namespace std;
 
 StackA::StackA() :
-        size{1},
-        data{new int[size]} {
+        size{0},
+        data{new int[capacity]} {
 }
 
 StackA::~StackA() {
@@ -22,17 +22,18 @@ bool StackA::isEmpty() const {
 }
 
 void StackA::push(const int element) {
-    if (iTop == size - 1 ) {
-        int *pNewData{new int[size * 2]};
+    if (iTop == capacity - 1) {
+        int *pNewData{new int[capacity * 2]};
         for (int i = 0; i < size; i += 1) {
             pNewData[i] = data[i];
         }
-        size *= 2;
+        capacity *= 2;
         delete[] data;
         data = pNewData;
 
     }
     data[iTop] = element;
+    size++;
     iTop++;
 }
 
@@ -53,9 +54,9 @@ void StackA::pop() {
 
 std::ostream &StackA::writeTo(std::ostream &ostrm) const {
     ostrm << "[ ";
-    for (ptrdiff_t i = 0; i <= iTop; i += 1) {
+    for (int i = 0; i <= size; i += 1) {
         ostrm << data[i];
-        if (i < iTop) {
+        if (i < size) {
             ostrm << ", ";
         }
 
